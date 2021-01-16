@@ -48,7 +48,7 @@ public class GamePanel extends JPanel {
     	g.setFont(textFont);
     	g.setColor(Color.YELLOW);
     	g.drawString("Press ENTER to start", 160, 140);
-    	g.drawString("Press SPACE for instructions", 120, 300);
+    	g.drawString("Press SPACE for instructions", 120s, 300);
     }
     
     void drawGameState(Graphics g) {
