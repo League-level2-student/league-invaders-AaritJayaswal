@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
+	public Rocketship ship = new Rocketship(250, 700, 50, 50);
+	
 	public Timer frameDraw;
 	
 	public Font titleFont;
@@ -29,7 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     	
     	textFont = new Font("Arial", Font.PLAIN, 20);
    
-    
+  
     }
     
     
@@ -65,6 +67,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     void drawGameState(Graphics g) {
     	g.setColor(Color.BLACK);
     	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+    	ship = new Rocketship(250,700,50,50);
     }
     
     void drawEndState(Graphics g)  {
