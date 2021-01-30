@@ -9,18 +9,18 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
-	public Rocketship ship = new Rocketship(250, 700, 50, 50);
-	
-	public Timer frameDraw;
-	
-	public Font titleFont;
-	
-	public Font textFont;
-	
-	final int MENU = 0;
+   	public Rocketship ship = new Rocketship(250, 700, 50, 50);
+   
+    public Timer frameDraw;
+   
+   	public Font titleFont;
+   
+    public Font textFont;
+   
+   	final int MENU = 0;
     final int GAME = 1;
     final int END = 2;
-	
+   	
     int currentState = MENU;
 
     public GamePanel() {
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     }
     
     void updateEndState()  {  
-    	
+   
     	
     }
     
@@ -63,7 +63,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     	g.drawString("Press ENTER to start", 160, 140);
     	g.drawString("Press SPACE for instructions", 120, 300);
     }
-    
+
     void drawGameState(Graphics g) {
     	g.setColor(Color.BLACK);
     	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);

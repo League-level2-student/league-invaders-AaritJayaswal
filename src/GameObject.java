@@ -15,6 +15,8 @@ public class GameObject {
 
 	void emptyUpdate() {
 		
+		
+		
 	}
 	
 }
