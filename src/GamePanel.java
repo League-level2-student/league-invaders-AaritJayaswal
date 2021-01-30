@@ -67,7 +67,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     void drawGameState(Graphics g) {
     	g.setColor(Color.BLACK);
     	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-    	ship = new Rocketship(250,700,50,50);
+    	ship.draw(g);
+    	
     }
     
     void drawEndState(Graphics g)  {
@@ -126,6 +127,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		        currentState = MENU;
 		    } else {
 		        currentState++;
+		        ship = new Rocketship(250,700,50,50);
 		    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
