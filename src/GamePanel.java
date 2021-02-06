@@ -9,7 +9,9 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
-   	public Rocketship ship = new Rocketship(250, 700, 50, 50);
+
+	
+   	public Rocketship ship = new Rocketship(250, 750, 50, 50);
    
     public Timer frameDraw;
    
@@ -117,8 +119,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 		repaint();
 	}
-
-
+	
+	
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -131,17 +134,27 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
-		    System.out.println("UP");
+		   
+		 ship.up();
+		    
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-		    System.out.println("DOWN");
+		    
+			 ship.down();
+			
+		   
+		    
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-		    System.out.println("RIGHT");
 		   
+		  
+		   ship.right();
 		}
 		 if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-		        System.out.println("LEFT");
+		        
+		      
+		        ship.left();
+		        
 		    }    
 	}
 
