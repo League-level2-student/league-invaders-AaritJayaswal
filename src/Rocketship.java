@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Rocketship extends GameObject { 
 	
 	
-	public int speed = 15;
+	public int speed = 10;
 	
 	
 	public Rocketship(int x1, int y1, int width1, int height1) {
@@ -17,11 +17,14 @@ public class Rocketship extends GameObject {
         g.fillRect(x, y, width, height);
 	
 }
-
+   
 	 public void right() {
-	       x+=speed;
-	    }
-	
+	     
+		 
+		 x+=speed;
+	    
+	    
+	 }
 	 public void left() {
 	        x-=speed;
 	    }
