@@ -1,6 +1,11 @@
 
 public class ObjectManager {
 
-	public Rocketship rocket;
+	public Rocketship ship;
+	
+	public ObjectManager(Rocketship ship1) {
+		
+		ship=ship1;
+	}
 	
 }
