@@ -35,11 +35,13 @@ void update(){
 	
 	for(Alien a: aliens) {
 		
-		update();
+		a.update();
+		int alienY = a.y;
+		
 	}
 	
 }
 
-int AlienY = alien.y1();
+
 
 }
