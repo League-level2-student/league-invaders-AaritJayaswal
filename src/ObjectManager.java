@@ -1,7 +1,10 @@
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ObjectManager {
+public class ObjectManager implements ActionListener{
 
 	public Rocketship ship;
 	
@@ -38,10 +41,74 @@ void update(){
 		a.update();
 		int alienY = a.y;
 		
+		if(LeagueInvaders.HEIGHT<alienY) {
+			
+			
+			a.isActive = false;
+			
+		}
+		
+		for(Projectile p: projectiles) {
+			
+			p.update();
+			int projectileY = p.y;
+			if(LeagueInvaders.HEIGHT>projectileY) {
+				
+				p.isActive = false;
+				
+				
+			}
+		}
+		
+		
+	}
+	
+}
+
+void draw(Graphics g){
+	
+	ship.draw(g);
+	
+	for(Alien a: aliens) {
+		
+		a.draw(g);
+	}
+	
+}
+
+
+void purgeObjects() {
+	
+	for(Alien a: aliens) {
+		
+		if(a.isActive == false) {
+	
+		aliens.remove(a);
+			
+		}
+	
+	
+}
+
+	for(Projectile p: projectiles) {
+		
+		if(p.isActive == false) {
+			
+			projectiles.remove(p);
+		
+		
+		}
+		
 	}
 	
 }
 
 
 
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 }

@@ -7,6 +7,8 @@ public class Alien extends GameObject{
 		// TODO Auto-generated constructor stub
 	}
 	public int speed = 1;
+	public boolean isActive = true;
+	
 	
 	void update() {
 		y+=speed;

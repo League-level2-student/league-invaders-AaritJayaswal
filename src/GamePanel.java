@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
   
     }
     
+    public ObjectManager object = new ObjectManager(ship);
     
     void updateMenuState() { 
     	
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
    
     void updateGameState() {  
     	
+    	object.update();
     	
     }
     
@@ -69,7 +71,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     void drawGameState(Graphics g) {
     	g.setColor(Color.BLACK);
     	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-    	ship.draw(g);
+    	object.draw(g);
     	
     }
     
@@ -87,6 +89,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     	g.drawString("Press ENTER to restart", 140, 300);
     	
     }
+    
+    Timer alienSpawn;
+    
+    void startGame() {
+    alienSpawn = new Timer(1000 ,);
+    alienSpawn.start();
+    	
+    }
+    
     
     @Override
 	public void paintComponent(Graphics g){
@@ -130,17 +141,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		        currentState = MENU;
 		    } else {
 		        currentState++;
-		        ship = new Rocketship(250,700,50,50);
+		        object.ship = new Rocketship(250,700,50,50);
 		    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		   
-		 ship.up();
+		 object.ship.up();
 		   
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		
-			 ship.down();
+			 object.ship.down();
 		    
 		   
 		    
@@ -148,12 +159,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 		   
 		  
-		   ship.right();
+		   object.ship.right();
 		}
 		 if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		        
 		      
-		        ship.left();
+		        object.ship.left();
 		        
 		    }    
 	}

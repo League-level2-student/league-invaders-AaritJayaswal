@@ -35,5 +35,10 @@ public class Rocketship extends GameObject {
 	        y+=speed;
 	    }
 	
+	 
+	 public Projectile getProjectile() {
+	        return new Projectile(x+width/2, y, 10, 10);
+	} 
+	 
 }
 

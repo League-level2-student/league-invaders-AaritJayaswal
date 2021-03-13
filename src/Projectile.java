@@ -9,6 +9,7 @@ public class Projectile extends GameObject {
 	}
 
 	public int speed = 10;
+	public boolean isActive = true;
 	
 	void update() {
 		y-=speed;
