@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
   
     }
     
-    public ObjectManager object = new ObjectManager(ship);
+    public ObjectManager objectManager = new ObjectManager(ship);
     
     void updateMenuState() { 
     	
@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
    
     void updateGameState() {  
     	
-    	object.update();
+    	objectManager.update();
     	
     }
     
@@ -71,7 +71,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     void drawGameState(Graphics g) {
     	g.setColor(Color.BLACK);
     	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-    	object.draw(g);
+    	objectManager.draw(g);
     	
     }
     
@@ -93,7 +93,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     Timer alienSpawn;
     
     void startGame() {
-    alienSpawn = new Timer(1000 ,);
+    alienSpawn = new Timer(1000,objectManager);
     alienSpawn.start();
     	
     }
@@ -123,9 +123,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(currentState == MENU){
 		    updateMenuState();
 		}else if(currentState == GAME){
-		    updateGameState();
+			updateGameState();
 		}else if(currentState == END){
-		    updateEndState();
+		    alienSpawn.stop();
+			updateEndState();
 		}
 	
 		repaint();
@@ -139,19 +140,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 		    if (currentState == END) {
 		        currentState = MENU;
+		        startGame();
 		    } else {
 		        currentState++;
-		        object.ship = new Rocketship(250,700,50,50);
+		        objectManager.ship = new Rocketship(250,700,50,50);
+		        
+		 if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+			 objectManager.addProjectile(ship.getProjectile());
+		 }
 		    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		   
-		 object.ship.up();
+		 objectManager.ship.up();
 		   
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		
-			 object.ship.down();
+			 objectManager.ship.down();
 		    
 		   
 		    
@@ -159,12 +165,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 		   
 		  
-		   object.ship.right();
+		   objectManager.ship.right();
 		}
 		 if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		        
 		      
-		        object.ship.left();
+		        objectManager.ship.left();
 		        
 		    }    
 	}
