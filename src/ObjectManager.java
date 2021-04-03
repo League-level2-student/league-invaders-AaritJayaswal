@@ -28,7 +28,7 @@ void addProjectile(Projectile p) {
 
 }
 
-void addAlien(Alien a) {
+void addAlien() {
 	
 	aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
 	
@@ -105,10 +105,13 @@ void purgeObjects() {
 
 
 
-
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	addAlien();
+	
 }
+
+
+
 }

@@ -123,10 +123,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(currentState == MENU){
 		    updateMenuState();
 		}else if(currentState == GAME){
-			startGame();
+			
 			updateGameState();
 		}else if(currentState == END){
-		    alienSpawn.stop();
+		  
 			updateEndState();
 		}
 	
@@ -143,12 +143,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		        currentState = MENU;
 		    	}
 		     
-		
-			else {
+		    
+		    
+		    else{
 				currentState++;
 				objectManager.ship = new Rocketship(250,700,50,50);
 				
-			}
+			 if (currentState == GAME) {
+			    	startGame();
+			    	
+			    }
+			
+			 else if (currentState == END) {
+				  alienSpawn.stop();
+				 
+			 }
+			 
+		    }
 		}
 		
 		if(currentState == GAME) {
