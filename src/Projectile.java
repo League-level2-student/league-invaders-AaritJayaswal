@@ -10,15 +10,15 @@ public class Projectile extends GameObject {
 
 	public int speed = 10;
 	public boolean isActive = true;
-	
+
 	void update() {
-		y-=speed;
-		
+		y -= speed;
+		super.update();
+
 	}
-	
+
 	void draw(Graphics g) {
-		  g.setColor(Color.RED);
-	        g.fillRect(x, y, width, height);
+		g.setColor(Color.RED);
+		g.fillRect(x, y, width, height);
 	}
 }
-
