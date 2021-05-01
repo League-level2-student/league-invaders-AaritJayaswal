@@ -92,7 +92,11 @@ public class ObjectManager implements ActionListener {
 				if (p.collisionBox.intersects(a.collisionBox)) {
 
 					p.isActive = false;
-
+					a.isActive = false;
+					
+					GamePanel.score++;
+					
+					
 				}
 			}
 		}
@@ -101,8 +105,10 @@ public class ObjectManager implements ActionListener {
 
 	void purgeObjects() {
 
-		for (Alien a : aliens) {
+		for (int i = 0; i < aliens.size(); i++) {
 
+			Alien a = aliens.get(i);
+			
 			if (a.isActive == false) {
 
 				aliens.remove(a);
@@ -111,9 +117,11 @@ public class ObjectManager implements ActionListener {
 
 		}
 		
-		for (Projectile p : projectiles) {
+		for (int i = 0; i < projectiles.size(); i++) {
 		
-
+			Projectile p = projectiles.get(i);
+			
+			
 			if (p.isActive == false) {
 
 				projectiles.remove(p);
@@ -122,15 +130,7 @@ public class ObjectManager implements ActionListener {
 
 		}
 
-		for (Alien a : aliens) {
 
-			if (a.isActive == false) {
-
-				aliens.remove(a);
-
-			}
-
-		}
 
 	}
 
@@ -138,7 +138,8 @@ public class ObjectManager implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		addAlien();
-
+		
+		
 	}
 
 }

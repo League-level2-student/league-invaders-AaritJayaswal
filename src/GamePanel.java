@@ -18,6 +18,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public Font textFont;
 
+	public static int score = 0;
+	
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
@@ -81,17 +83,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		g.setFont(textFont);
 		g.setColor(Color.BLACK);
-		g.drawString("You killed number enemies", 130, 140);
+		g.drawString("You killed "+ score+ " enemies", 130, 140);
 		g.drawString("Press ENTER to restart", 140, 300);
 
 	}
 
 	Timer alienSpawn;
-
+	
+	
 	void startGame() {
-		alienSpawn = new Timer(1000, objectManager);
+		alienSpawn = new Timer(500, objectManager);
 		alienSpawn.start();
 
+
+		
 	}
 
 	@Override
@@ -130,6 +135,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentState == END) {
 				currentState = MENU;
+			ship.isActive = true;
+				
 			}
 
 			else {
@@ -153,6 +160,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				objectManager.addProjectile(objectManager.ship.getProjectile());
+			
+			
+			
 			}
 
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
