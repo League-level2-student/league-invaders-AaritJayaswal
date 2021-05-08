@@ -5,11 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;	
+	
 	public Rocketship ship = new Rocketship(250, 750, 50, 50);
 
 	public Timer frameDraw;
@@ -36,6 +42,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	}
 
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
+	}
+	
 	public ObjectManager objectManager = new ObjectManager(ship);
 
 	void updateMenuState() {
@@ -45,7 +63,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 
 		objectManager.update();
-
+		if (needImage) {
+		    loadImage ("space.png");
+		}
 	}
 
 	void updateEndState() {
@@ -67,6 +87,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics g) {
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		objectManager.draw(g);
